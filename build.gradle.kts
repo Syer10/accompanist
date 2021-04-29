@@ -1,5 +1,8 @@
+import com.vanniktech.maven.publish.MavenPublishPlugin
+import com.vanniktech.maven.publish.MavenPublishPluginExtension
 import org.jetbrains.dokka.gradle.DokkaMultiModuleTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.util.Properties
 
 /*
  * Copyright 2020 The Android Open Source Project
@@ -21,7 +24,7 @@ plugins {
     id("com.diffplug.spotless") version "5.9.0"
     kotlin("jvm") version "1.4.32" apply false
     id("org.jetbrains.compose") version "0.4.0-build184" apply false
-    id("com.vanniktech.maven.publish") version "0.15.0" apply false
+    id("com.vanniktech.maven.publish") version "0.15.0"
     id("org.jetbrains.dokka") version "1.4.30"
     id("me.tylerbwong.gradle.metalava") version "0.1.6" apply false
 }
@@ -46,6 +49,7 @@ subprojects {
     }
 }
 subprojects {
+    apply(plugin = "com.vanniktech.maven.publish")
     apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "com.diffplug.spotless")
     spotless {
@@ -79,10 +83,17 @@ subprojects {
         }
     }
 
+    plugins.withId("com.vanniktech.maven.publish") {
+        this as MavenPublishPlugin
+        val ext = extensions["mavenPublish"] as MavenPublishPluginExtension
+        ext.sonatypeHost = com.vanniktech.maven.publish.SonatypeHost.S01
+    }
+
+
     // Read in the signing.properties file if it is exists
     val signingPropsFile = rootProject.file("release/signing.properties")
     if (signingPropsFile.exists()) {
-        val localProperties = java.util.Properties()
+        val localProperties = Properties()
         signingPropsFile.inputStream().use {
             localProperties.load(it)
         }

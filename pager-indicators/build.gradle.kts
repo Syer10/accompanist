@@ -18,7 +18,6 @@ plugins {
     kotlin("jvm")
     `java-library`
     id("org.jetbrains.compose")
-    id("com.vanniktech.maven.publish")
     id("me.tylerbwong.gradle.metalava")
 }
 

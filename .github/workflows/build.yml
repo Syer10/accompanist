@@ -32,8 +32,8 @@ jobs:
         with:
           java-version: 11
 
-      #- name: Decrypt secrets
-      #  run: release/signing-setup.sh ${{ secrets.ENCRYPT_KEY }}
+      - name: Decrypt secrets
+        run: release/signing-setup.sh ${{ secrets.ENCRYPT_KEY }}
 
       #- name: Generate cache key
       #  run: ./checksum.sh checksum.txt
@@ -72,8 +72,8 @@ jobs:
         with:
           java-version: 11
 
-      #- name: Decrypt secrets
-      #  run: release/signing-setup.sh ${{ secrets.ENCRYPT_KEY }}
+      - name: Decrypt secrets
+        run: release/signing-setup.sh ${{ secrets.ENCRYPT_KEY }}
 
       #- name: Generate cache key
       #  run: ./checksum.sh checksum.txt
@@ -126,6 +126,9 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+
+      - name: Decrypt secrets
+        run: release/signing-setup.sh ${{ secrets.ENCRYPT_KEY }}
 
       #- name: Generate cache key
       #  run: ./checksum.sh checksum.txt
