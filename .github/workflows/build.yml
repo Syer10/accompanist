@@ -32,22 +32,22 @@ jobs:
         with:
           java-version: 11
 
-      - name: Decrypt secrets
-        run: release/signing-setup.sh ${{ secrets.ENCRYPT_KEY }}
+      #- name: Decrypt secrets
+      #  run: release/signing-setup.sh ${{ secrets.ENCRYPT_KEY }}
 
-      - name: Generate cache key
-        run: ./checksum.sh checksum.txt
+      #- name: Generate cache key
+      #  run: ./checksum.sh checksum.txt
 
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches/modules-*
-            ~/.gradle/caches/jars-*
-            ~/.gradle/caches/build-cache-*
-          key: gradle-${{ hashFiles('checksum.txt') }}
+      #- uses: actions/cache@v2
+      #  with:
+      #    path: |
+      #      ~/.gradle/caches/modules-*
+      #      ~/.gradle/caches/jars-*
+      #      ~/.gradle/caches/build-cache-*
+      #    key: gradle-${{ hashFiles('checksum.txt') }}
 
       - name: Build and spotless
-        run: ./gradlew spotlessCheck assemble metalavaCheckCompatibility --scan
+        run: ./gradlew spotlessCheck assemble --scan #metalavaCheckCompatibility --scan
 
       - name: Clean secrets
         if: always()
@@ -72,19 +72,19 @@ jobs:
         with:
           java-version: 11
 
-      - name: Decrypt secrets
-        run: release/signing-setup.sh ${{ secrets.ENCRYPT_KEY }}
+      #- name: Decrypt secrets
+      #  run: release/signing-setup.sh ${{ secrets.ENCRYPT_KEY }}
 
-      - name: Generate cache key
-        run: ./checksum.sh checksum.txt
+      #- name: Generate cache key
+      #  run: ./checksum.sh checksum.txt
 
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches/modules-*
-            ~/.gradle/caches/jars-*
-            ~/.gradle/caches/build-cache-*
-          key: gradle-${{ hashFiles('checksum.txt') }}
+      #- uses: actions/cache@v2
+      #  with:
+      #    path: |
+      #      ~/.gradle/caches/modules-*
+      #      ~/.gradle/caches/jars-*
+      #      ~/.gradle/caches/build-cache-*
+      #    key: gradle-${{ hashFiles('checksum.txt') }}
 
       - name: Run tests
         run: ./gradlew test --scan
@@ -127,19 +127,16 @@ jobs:
         with:
           java-version: 11
 
-      - name: Decrypt secrets
-        run: release/signing-setup.sh ${{ secrets.ENCRYPT_KEY }}
+      #- name: Generate cache key
+      #  run: ./checksum.sh checksum.txt
 
-      - name: Generate cache key
-        run: ./checksum.sh checksum.txt
-
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches/modules-*
-            ~/.gradle/caches/jars-*
-            ~/.gradle/caches/build-cache-*
-          key: gradle-${{ hashFiles('checksum.txt') }}
+      #- uses: actions/cache@v2
+      #  with:
+      #    path: |
+      #      ~/.gradle/caches/modules-*
+      #      ~/.gradle/caches/jars-*
+      #      ~/.gradle/caches/build-cache-*
+      #    key: gradle-${{ hashFiles('checksum.txt') }}
 
       - name: Build docs
         # We manually run assemble & dokka before uploadArchives. If we only run uploadArchives,
