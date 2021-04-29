@@ -1,5 +1,6 @@
 import com.vanniktech.maven.publish.MavenPublishPlugin
 import com.vanniktech.maven.publish.MavenPublishPluginExtension
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.dokka.gradle.DokkaMultiModuleTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.util.Properties
@@ -84,9 +85,9 @@ subprojects {
     }
 
     plugins.withId("com.vanniktech.maven.publish") {
-        this as MavenPublishPlugin
-        val ext = extensions["mavenPublish"] as MavenPublishPluginExtension
-        ext.sonatypeHost = com.vanniktech.maven.publish.SonatypeHost.S01
+        (extensions["mavenPublish"] as MavenPublishPluginExtension).apply {
+            sonatypeHost = SonatypeHost.S01
+        }
     }
 
 
