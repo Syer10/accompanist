@@ -25,7 +25,7 @@ plugins {
     id("com.diffplug.spotless") version "5.9.0"
     kotlin("jvm") version "1.4.32" apply false
     id("org.jetbrains.compose") version "0.4.0-build184" apply false
-    id("com.vanniktech.maven.publish") version "0.15.0"
+    id("com.vanniktech.maven.publish") version "0.13.0"
     id("org.jetbrains.dokka") version "1.4.30"
     id("me.tylerbwong.gradle.metalava") version "0.1.6" apply false
 }
