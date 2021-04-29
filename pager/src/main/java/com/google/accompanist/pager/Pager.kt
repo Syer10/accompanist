@@ -18,8 +18,6 @@
 
 package com.google.accompanist.pager
 
-import android.util.Log
-import androidx.annotation.IntRange
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.DecayAnimationSpec
 import androidx.compose.animation.core.spring
@@ -55,6 +53,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
+import mu.KotlinLogging
 import kotlin.math.roundToInt
 
 /**
@@ -63,6 +62,7 @@ import kotlin.math.roundToInt
 internal const val DebugLog = false
 
 private const val LogTag = "Pager"
+private val logger = KotlinLogging.logger(LogTag)
 
 /**
  * This attempts to mimic ViewPager's custom scroll interpolator. It's not a perfect match
@@ -72,7 +72,7 @@ private const val SnapSpringStiffness = 2750f
 
 @RequiresOptIn(message = "Accompanist Pager is experimental. The API may be changed in the future.")
 @Retention(AnnotationRetention.BINARY)
-annotation class ExperimentalPagerApi
+public annotation class ExperimentalPagerApi
 
 @Immutable
 private data class PageData(val page: Int) : ParentDataModifier {
@@ -86,7 +86,7 @@ private val Measurable.page: Int
  * Contains the default values used by [HorizontalPager] and [VerticalPager].
  */
 @ExperimentalPagerApi
-object PagerDefaults {
+public object PagerDefaults {
     /**
      * Create and remember default [FlingBehavior] that will represent the scroll curve.
      *
@@ -95,7 +95,7 @@ object PagerDefaults {
      * @param snapAnimationSpec The animation spec to use when snapping.
      */
     @Composable
-    fun defaultPagerFlingConfig(
+    public fun defaultPagerFlingConfig(
         state: PagerState,
         decayAnimationSpec: DecayAnimationSpec<Float> = defaultDecayAnimationSpec(),
         snapAnimationSpec: AnimationSpec<Float> = spring(stiffness = SnapSpringStiffness),
@@ -139,12 +139,13 @@ object PagerDefaults {
  */
 @ExperimentalPagerApi
 @Composable
-fun HorizontalPager(
+public fun HorizontalPager(
     state: PagerState,
     modifier: Modifier = Modifier,
     reverseLayout: Boolean = false,
     itemSpacing: Dp = 0.dp,
-    @IntRange(from = 1) offscreenLimit: Int = 1,
+    // has to be over 1
+    offscreenLimit: Int = 1,
     dragEnabled: Boolean = true,
     flingBehavior: FlingBehavior = PagerDefaults.defaultPagerFlingConfig(state),
     verticalAlignment: Alignment.Vertical = Alignment.CenterVertically,
@@ -192,12 +193,13 @@ fun HorizontalPager(
  */
 @ExperimentalPagerApi
 @Composable
-fun VerticalPager(
+public fun VerticalPager(
     state: PagerState,
     modifier: Modifier = Modifier,
     reverseLayout: Boolean = false,
     itemSpacing: Dp = 0.dp,
-    @IntRange(from = 1) offscreenLimit: Int = 1,
+    // has to be over 1
+    offscreenLimit: Int = 1,
     dragEnabled: Boolean = true,
     flingBehavior: FlingBehavior = PagerDefaults.defaultPagerFlingConfig(state),
     verticalAlignment: Alignment.Vertical = Alignment.CenterVertically,
@@ -229,7 +231,8 @@ internal fun Pager(
     isVertical: Boolean,
     verticalAlignment: Alignment.Vertical,
     horizontalAlignment: Alignment.Horizontal,
-    @IntRange(from = 1) offscreenLimit: Int,
+    // has to be over 1
+    offscreenLimit: Int,
     dragEnabled: Boolean,
     flingBehavior: FlingBehavior,
     content: @Composable PagerScope.(page: Int) -> Unit,
@@ -288,8 +291,7 @@ internal fun Pager(
             val lastPage = (state.currentLayoutPage + offscreenLimit).coerceAtMost(state.lastPageIndex)
 
             if (DebugLog) {
-                Log.d(
-                    LogTag,
+                logger.debug(
                     "Content: firstPage:$firstPage, " +
                         "layoutPage:${state.currentLayoutPage}, " +
                         "currentPage:${state.currentPage}, " +
@@ -379,16 +381,16 @@ internal fun Pager(
  */
 @ExperimentalPagerApi
 @Stable
-interface PagerScope : BoxScope {
+public interface PagerScope : BoxScope {
     /**
      * Returns the current selected page
      */
-    val currentPage: Int
+    public val currentPage: Int
 
     /**
      * Returns the current selected page offset
      */
-    val currentPageOffset: Float
+    public val currentPageOffset: Float
 }
 
 @ExperimentalPagerApi
@@ -410,6 +412,6 @@ private class PagerScopeImpl(
  * @sample com.google.accompanist.sample.pager.HorizontalPagerWithOffsetTransition
  */
 @ExperimentalPagerApi
-fun PagerScope.calculateCurrentOffsetForPage(page: Int): Float {
+public fun PagerScope.calculateCurrentOffsetForPage(page: Int): Float {
     return (currentPage + currentPageOffset) - page
 }

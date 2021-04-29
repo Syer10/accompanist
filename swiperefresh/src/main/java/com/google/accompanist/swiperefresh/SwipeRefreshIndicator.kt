@@ -101,7 +101,7 @@ private val LargeSizes = SwipeRefreshIndicatorSizes(
  * @param elevation The size of the shadow below the indicator.
  */
 @Composable
-fun SwipeRefreshIndicator(
+public fun SwipeRefreshIndicator(
     state: SwipeRefreshState,
     refreshTriggerDistance: Dp,
     modifier: Modifier = Modifier,
