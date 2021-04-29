@@ -46,8 +46,8 @@ jobs:
             ~/.gradle/caches/build-cache-*
           key: gradle-${{ hashFiles('checksum.txt') }}
 
-      - name: Build, lint and spotless
-        run: ./gradlew spotlessCheck assemble lintDebug metalavaCheckCompatibility --scan
+      - name: Build and spotless
+        run: ./gradlew spotlessCheck assemble metalavaCheckCompatibility --scan
 
       - name: Clean secrets
         if: always()
