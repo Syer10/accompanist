@@ -49,17 +49,17 @@ subprojects {
     apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "com.diffplug.spotless")
     spotless {
-        kotlin {
-            target("**/*.kt")
-            ktlint("0.40.0")
-            licenseHeader(rootProject.file("spotless/copyright.txt").absolutePath)
-        }
+        //kotlin {
+        //    target("**/*.kt")
+        //    ktlint("0.40.0")
+        //    licenseHeader(rootProject.file("spotless/copyright.txt").absolutePath)
+        //}
 
-        kotlinGradle {
-            target("**/*.gradle.kts")
-            ktlint("0.40.0")
-            licenseHeader(rootProject.file("spotless/copyright.txt").absolutePath, "(buildscript|apply|import|plugins)")
-        }
+        //kotlinGradle {
+        //    target("**/*.gradle.kts")
+        //    ktlint("0.40.0")
+        //    licenseHeader(rootProject.file("spotless/copyright.txt").absolutePath, "(buildscript|apply|import|plugins)")
+        //}
     }
 
     tasks.withType<KotlinCompile> {
