@@ -35,19 +35,13 @@ jobs:
       - name: Decrypt secrets
         run: release/signing-setup.sh ${{ secrets.ENCRYPT_KEY }}
 
-      #- name: Generate cache key
-      #  run: ./checksum.sh checksum.txt
-
-      #- uses: actions/cache@v2
-      #  with:
-      #    path: |
-      #      ~/.gradle/caches/modules-*
-      #      ~/.gradle/caches/jars-*
-      #      ~/.gradle/caches/build-cache-*
-      #    key: gradle-${{ hashFiles('checksum.txt') }}
-
       - name: Build and spotless
-        run: ./gradlew spotlessCheck assemble --scan #metalavaCheckCompatibility --scan
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: spotlessCheck assemble --scan #metalavaCheckCompatibility --scan
+          wrapper-cache-enabled: true
+          dependencies-cache-enabled: true
+          configuration-cache-enabled: true
 
       - name: Clean secrets
         if: always()
@@ -75,19 +69,13 @@ jobs:
       - name: Decrypt secrets
         run: release/signing-setup.sh ${{ secrets.ENCRYPT_KEY }}
 
-      #- name: Generate cache key
-      #  run: ./checksum.sh checksum.txt
-
-      #- uses: actions/cache@v2
-      #  with:
-      #    path: |
-      #      ~/.gradle/caches/modules-*
-      #      ~/.gradle/caches/jars-*
-      #      ~/.gradle/caches/build-cache-*
-      #    key: gradle-${{ hashFiles('checksum.txt') }}
-
       - name: Run tests
-        run: ./gradlew test --scan
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: test --scan
+          wrapper-cache-enabled: true
+          dependencies-cache-enabled: true
+          configuration-cache-enabled: true
 
       - name: Clean secrets
         if: always()
@@ -130,26 +118,25 @@ jobs:
       - name: Decrypt secrets
         run: release/signing-setup.sh ${{ secrets.ENCRYPT_KEY }}
 
-      #- name: Generate cache key
-      #  run: ./checksum.sh checksum.txt
-
-      #- uses: actions/cache@v2
-      #  with:
-      #    path: |
-      #      ~/.gradle/caches/modules-*
-      #      ~/.gradle/caches/jars-*
-      #      ~/.gradle/caches/build-cache-*
-      #    key: gradle-${{ hashFiles('checksum.txt') }}
-
       - name: Build docs
-        # We manually run assemble & dokka before uploadArchives. If we only run uploadArchives,
-        # the assemble and dokka tasks are run interleaved on each module, which can cause
-        # connection timeouts to Sonatype (since we need to wait for assemble+dokka to finish).
-        # By front-loading the assemble+dokka tasks, the upload below is much quicker.
-        run: ./gradlew assemble dokkaHtml
+        uses: eskatos/gradle-command-action@v1
+        with:
+          # We manually run assemble & dokka before uploadArchives. If we only run uploadArchives,
+          # the assemble and dokka tasks are run interleaved on each module, which can cause
+          # connection timeouts to Sonatype (since we need to wait for assemble+dokka to finish).
+          # By front-loading the assemble+dokka tasks, the upload below is much quicker.
+          arguments: assemble dokkaHtml
+          wrapper-cache-enabled: true
+          dependencies-cache-enabled: true
+          configuration-cache-enabled: true
 
       - name: Deploy to Sonatype
-        run: ./gradlew uploadArchives --no-parallel
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: publish --no-parallel
+          wrapper-cache-enabled: true
+          dependencies-cache-enabled: true
+          configuration-cache-enabled: true
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}

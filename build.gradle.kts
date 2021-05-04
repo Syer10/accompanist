@@ -83,21 +83,18 @@ subprojects {
         }
     }
 
-    plugins.withId("com.vanniktech.maven.publish") {
-        (extensions["mavenPublish"] as MavenPublishPluginExtension).apply {
-            sonatypeHost = SonatypeHost.S01
-        }
-    }
+    val mavenPublish = extensions["mavenPublish"] as MavenPublishPluginExtension
+    mavenPublish.sonatypeHost = SonatypeHost.S01
 
 
     // Read in the signing.properties file if it is exists
     val signingPropsFile = rootProject.file("release/signing.properties")
     if (signingPropsFile.exists()) {
-        val localProperties = Properties()
-        signingPropsFile.inputStream().use {
-            localProperties.load(it)
-        }
-        localProperties.forEach { key1, value1 ->
+        Properties().apply {
+            signingPropsFile.inputStream().use {
+                load(it)
+            }
+        }.forEach { key1, value1 ->
             val key = key1.toString()
             val value = value1.toString()
             if (key == "signing.secretKeyRingFile") {

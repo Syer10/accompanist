@@ -1,18 +1,18 @@
 # Pager composable for Jetpack Compose
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.google.accompanist/accompanist-pager)](https://search.maven.org/search?q=g:com.google.accompanist)
+[![Maven Central](https://img.shields.io/maven-central/v/ca.gosyer/accompanist-pager)](https://search.maven.org/search?q=g:com.google.accompanist)
 
-For more information, visit the documentation: https://google.github.io/accompanist/pager
+For more information, visit the documentation: https://syer10.github.io/accompanist/pager
 
 ## Download
 
-```groovy
+```kotlin
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation "com.google.accompanist:accompanist-pager:<version>"
+    implementation("ca.gosyer:accompanist-pager:<version>")
 }
 ```
 

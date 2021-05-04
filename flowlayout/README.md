@@ -1,6 +1,6 @@
 # Jetpack Compose Flow Layouts
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.google.accompanist/accompanist-flowlayout)](https://search.maven.org/search?q=g:com.google.accompanist)
+[![Maven Central](https://img.shields.io/maven-central/v/ca.gosyer/accompanist-flowlayout)](https://search.maven.org/search?q=g:com.google.accompanist)
 
 Flow layouts adapted from the [Jetpack Compose][compose] alpha versions.
 
@@ -20,17 +20,17 @@ FlowColumn {
 
 For examples, refer to the [samples](https://github.com/google/accompanist/tree/main/sample/src/main/java/com/google/accompanist/sample/flowlayout).
 
-For more information, visit the documentation: https://google.github.io/accompanist/flowlayout
+For more information, visit the documentation: https://syer10.github.io/accompanist/flowlayout
 
 ## Download
 
-```groovy
+```kotlin
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation "com.google.accompanist:accompanist-flowlayout:<version>"
+    implementation("ca.gosyer:accompanist-flowlayout:<version>")
 }
 ```
 
