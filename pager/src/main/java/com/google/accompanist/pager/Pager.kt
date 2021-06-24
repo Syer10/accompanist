@@ -75,7 +75,7 @@ private const val SnapSpringStiffness = 2750f
 
 @RequiresOptIn(message = "Accompanist Pager is experimental. The API may be changed in the future.")
 @Retention(AnnotationRetention.BINARY)
-annotation class ExperimentalPagerApi
+public annotation class ExperimentalPagerApi
 
 @Immutable
 private data class PageData(val page: Int) : ParentDataModifier {
@@ -89,7 +89,7 @@ private val Measurable.page: Int
  * Contains the default values used by [HorizontalPager] and [VerticalPager].
  */
 @ExperimentalPagerApi
-object PagerDefaults {
+public object PagerDefaults {
     /**
      * Create and remember default [FlingBehavior] that will represent the scroll curve.
      *
@@ -98,7 +98,7 @@ object PagerDefaults {
      * @param snapAnimationSpec The animation spec to use when snapping.
      */
     @Composable
-    fun defaultPagerFlingConfig(
+    public fun defaultPagerFlingConfig(
         state: PagerState,
         decayAnimationSpec: DecayAnimationSpec<Float> = rememberSplineBasedDecay(),
         snapAnimationSpec: AnimationSpec<Float> = spring(stiffness = SnapSpringStiffness),
@@ -135,7 +135,7 @@ object PagerDefaults {
  */
 @ExperimentalPagerApi
 @Composable
-fun HorizontalPager(
+public fun HorizontalPager(
     state: PagerState,
     modifier: Modifier = Modifier,
     reverseLayout: Boolean = false,
@@ -179,7 +179,7 @@ fun HorizontalPager(
  */
 @ExperimentalPagerApi
 @Composable
-fun VerticalPager(
+public fun VerticalPager(
     state: PagerState,
     modifier: Modifier = Modifier,
     reverseLayout: Boolean = false,
@@ -383,16 +383,16 @@ private object ConsumeFlingNestedScrollConnection : NestedScrollConnection {
  */
 @ExperimentalPagerApi
 @Stable
-interface PagerScope : BoxScope {
+public interface PagerScope : BoxScope {
     /**
      * Returns the current selected page
      */
-    val currentPage: Int
+    public val currentPage: Int
 
     /**
      * Returns the current selected page offset
      */
-    val currentPageOffset: Float
+    public val currentPageOffset: Float
 }
 
 @ExperimentalPagerApi
@@ -414,6 +414,6 @@ private class PagerScopeImpl(
  * @sample com.google.accompanist.sample.pager.HorizontalPagerWithOffsetTransition
  */
 @ExperimentalPagerApi
-fun PagerScope.calculateCurrentOffsetForPage(page: Int): Float {
+public fun PagerScope.calculateCurrentOffsetForPage(page: Int): Float {
     return (currentPage + currentPageOffset) - page
 }

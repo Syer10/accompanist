@@ -18,8 +18,6 @@
 
 package com.google.accompanist.pager
 
-import androidx.annotation.FloatRange
-import androidx.annotation.IntRange
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.AnimationState
 import androidx.compose.animation.core.DecayAnimationSpec
@@ -62,11 +60,11 @@ private const val LogTag = "PagerState"
  */
 @ExperimentalPagerApi
 @Composable
-fun rememberPagerState(
-    @IntRange(from = 0) pageCount: Int,
-    @IntRange(from = 0) initialPage: Int = 0,
-    @FloatRange(from = 0.0, to = 1.0) initialPageOffset: Float = 0f,
-    @IntRange(from = 1) initialOffscreenLimit: Int = 1,
+public fun rememberPagerState(
+    /*@IntRange(from = 0)*/ pageCount: Int,
+    /*@IntRange(from = 0)*/ initialPage: Int = 0,
+    /*@FloatRange(from = 0.0, to = 1.0)*/ initialPageOffset: Float = 0f,
+    /*@IntRange(from = 1)*/ initialOffscreenLimit: Int = 1,
     infiniteLoop: Boolean = false
 ): PagerState = rememberSaveable(saver = PagerState.Saver) {
     PagerState(
@@ -99,10 +97,10 @@ fun rememberPagerState(
  */
 @ExperimentalPagerApi
 @Stable
-class PagerState(
-    @IntRange(from = 0) pageCount: Int,
-    @IntRange(from = 0) currentPage: Int = 0,
-    @FloatRange(from = 0.0, to = 1.0) currentPageOffset: Float = 0f,
+public class PagerState(
+    /*@IntRange(from = 0)*/ pageCount: Int,
+    /*@IntRange(from = 0)*/ currentPage: Int = 0,
+    /*@FloatRange(from = 0.0, to = 1.0)*/ currentPageOffset: Float = 0f,
     private val offscreenLimit: Int = 1,
     private val infiniteLoop: Boolean = false,
 ) : ScrollableState {
@@ -192,10 +190,10 @@ class PagerState(
     /**
      * The number of pages to display.
      */
-    @get:IntRange(from = 0)
-    var pageCount: Int
+    /*@get:IntRange(from = 0)*/
+    public var pageCount: Int
         get() = _pageCount
-        set(@IntRange(from = 0) value) {
+        set(/*@IntRange(from = 0) */value) {
             require(value >= 0) { "pageCount must be >= 0" }
             _pageCount = value
             currentPage = currentPage.coerceIn(firstPageIndex, lastPageIndex)
@@ -208,8 +206,8 @@ class PagerState(
      *
      * To update the scroll position, use [scrollToPage] or [animateScrollToPage].
      */
-    @get:IntRange(from = 0)
-    var currentPage: Int
+    /*@get:IntRange(from = 0)*/
+    public var currentPage: Int
         get() = _currentPage
         private set(value) {
             _currentPage = value.floorMod(pageCount)
@@ -225,7 +223,7 @@ class PagerState(
      *
      * To update the scroll position, use [scrollToPage] or [animateScrollToPage].
      */
-    val currentPageOffset: Float
+    public val currentPageOffset: Float
         get() = absolutePosition - currentPage
 
     /**
@@ -237,7 +235,7 @@ class PagerState(
      * The target page for any on-going animations or scrolls by the user.
      * Returns null if a scroll or animation is not currently in progress.
      */
-    val targetPage: Int?
+    public val targetPage: Int?
         get() = _animationTargetPage ?: when {
             // If a scroll isn't in progress, return null
             !isScrollInProgress -> null
@@ -264,9 +262,9 @@ class PagerState(
      * should see no difference. Pass `false` to animate over all pages between [currentPage]
      * and [page]. Defaults to `true`.
      */
-    suspend fun animateScrollToPage(
-        @IntRange(from = 0) page: Int,
-        @FloatRange(from = 0.0, to = 1.0) pageOffset: Float = 0f,
+    public suspend fun animateScrollToPage(
+        /*@IntRange(from = 0) */page: Int,
+        /*@FloatRange(from = 0.0, to = 1.0)*/ pageOffset: Float = 0f,
         animationSpec: AnimationSpec<Float> = spring(),
         initialVelocity: Float = 0f,
         skipPages: Boolean = true,
@@ -312,9 +310,9 @@ class PagerState(
      * @param pageOffset the percentage of the page width to offset, from the start of [page].
      * Must be in the range 0f..1f.
      */
-    suspend fun scrollToPage(
-        @IntRange(from = 0) page: Int,
-        @FloatRange(from = 0.0, to = 1.0) pageOffset: Float = 0f,
+    public suspend fun scrollToPage(
+        /*@IntRange(from = 0)*/ page: Int,
+        /*@FloatRange(from = 0.0, to = 1.0)*/ pageOffset: Float = 0f,
     ) {
         requireCurrentPage(page, "page")
         requireCurrentPageOffset(pageOffset, "pageOffset")
@@ -660,11 +658,11 @@ class PagerState(
         return rawPage.floorMod(pageCount)
     }
 
-    companion object {
+    public companion object {
         /**
          * The default [Saver] implementation for [PagerState].
          */
-        val Saver: Saver<PagerState, *> = listSaver(
+        public val Saver: Saver<PagerState, *> = listSaver(
             save = {
                 listOf<Any>(
                     it.pageCount,

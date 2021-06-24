@@ -1,6 +1,6 @@
 # Swipe Refresh for Jetpack Compose
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.google.accompanist/accompanist-swiperefresh)](https://search.maven.org/search?q=g:com.google.accompanist)
+[![Maven Central](https://img.shields.io/maven-central/v/ca.gosyer/accompanist-swiperefresh)](https://search.maven.org/search?q=g:com.google.accompanist)
 
 A library which provides a layout which provides the swipe-to-refresh UX pattern, similar to Android's [`SwipeRefreshLayout`](https://developer.android.com/training/swipe/add-swipe-interface).
 
@@ -117,7 +117,7 @@ An example of a custom indicator is provided [here][sample_customindictor].
 
 ## Download
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.google.accompanist/accompanist-swiperefresh)](https://search.maven.org/search?q=g:com.google.accompanist)
+[![Maven Central](https://img.shields.io/maven-central/v/ca.gosyer/accompanist-swiperefresh)](https://search.maven.org/search?q=g:com.google.accompanist)
 
 ```groovy
 repositories {
@@ -125,7 +125,7 @@ repositories {
 }
 
 dependencies {
-    implementation "com.google.accompanist:accompanist-swiperefresh:<version>"
+    implementation "ca.gosyer:accompanist-swiperefresh:<version>"
 }
 ```
 

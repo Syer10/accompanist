@@ -1,6 +1,6 @@
 # Placeholder
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.google.accompanist/accompanist-placeholder)](https://search.maven.org/search?q=g:com.google.accompanist)
+[![Maven Central](https://img.shields.io/maven-central/v/ca.gosyer/accompanist-placeholder)](https://search.maven.org/search?q=g:com.google.accompanist)
 
 A library which provides a [modifier][modifier] for display 'placeholder' UI while content is loading.
 
@@ -163,17 +163,17 @@ This displays a gradient shimmer effect which emanates from the top-start corner
 
 ## Usage
 
-``` groovy
+``` kotlin
 repositories {
     mavenCentral()
 }
 
 dependencies {
     // If you're using Material, use accompanist-placeholder-material
-    implementation "com.google.accompanist:accompanist-placeholder-material:<version>"
+    implementation("ca.gosyer:accompanist-placeholder-material:<version>")
 
     // Otherwise use the foundation version
-    implementation "com.google.accompanist:accompanist-placeholder:<version>"
+    implementation("ca.gosyer:accompanist-placeholder:<version>")
 }
 ```
 

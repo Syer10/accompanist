@@ -42,7 +42,7 @@ import com.google.accompanist.placeholder.placeholder
  * on top of [backgroundColor]. Defaults to `0.1f`.
  */
 @Composable
-fun PlaceholderDefaults.color(
+public fun PlaceholderDefaults.color(
     backgroundColor: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(backgroundColor),
     contentAlpha: Float = 0.1f,
@@ -57,7 +57,7 @@ fun PlaceholderDefaults.color(
  * @param alpha The alpha component to set on [backgroundColor]. Defaults to `0.3f`.
  */
 @Composable
-fun PlaceholderDefaults.fadeHighlightColor(
+public fun PlaceholderDefaults.fadeHighlightColor(
     backgroundColor: Color = MaterialTheme.colors.surface,
     alpha: Float = 0.3f,
 ): Color = backgroundColor.copy(alpha = alpha)
@@ -71,7 +71,7 @@ fun PlaceholderDefaults.fadeHighlightColor(
  * @param alpha The alpha component to set on [backgroundColor]. Defaults to `0.75f`.
  */
 @Composable
-fun PlaceholderDefaults.shimmerHighlightColor(
+public fun PlaceholderDefaults.shimmerHighlightColor(
     backgroundColor: Color = MaterialTheme.colors.surface,
     alpha: Float = 0.75f,
 ): Color {
@@ -108,7 +108,7 @@ fun PlaceholderDefaults.shimmerHighlightColor(
  * @param contentFadeTransitionSpec The transition spec to use when fading the content
  * on/off screen. The boolean parameter defined for the transition is [visible].
  */
-fun Modifier.placeholder(
+public fun Modifier.placeholder(
     visible: Boolean,
     color: Color = Color.Unspecified,
     shape: Shape? = null,

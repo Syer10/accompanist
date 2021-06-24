@@ -22,17 +22,6 @@ jobs:
         with:
           java-version: 11
 
-      - name: Generate cache key
-        run: ./checksum.sh checksum.txt
-
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches/modules-*
-            ~/.gradle/caches/jars-*
-            ~/.gradle/caches/build-cache-*
-          key: gradle-${{ hashFiles('checksum.txt') }}
-
       - name: Setup Python
         uses: actions/setup-python@v2
         with:

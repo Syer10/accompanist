@@ -16,7 +16,6 @@
 
 package com.google.accompanist.placeholder
 
-import androidx.annotation.FloatRange
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.InfiniteRepeatableSpec
 import androidx.compose.runtime.Stable
@@ -32,11 +31,11 @@ import kotlin.math.max
  * A class which provides a brush to paint placeholder based on progress.
  */
 @Stable
-interface PlaceholderHighlight {
+public interface PlaceholderHighlight {
     /**
      * The optional [AnimationSpec] to use when running the animation for this highlight.
      */
-    val animationSpec: InfiniteRepeatableSpec<Float>?
+    public val animationSpec: InfiniteRepeatableSpec<Float>?
 
     /**
      * Return a [Brush] to draw for the given [progress] and [size].
@@ -44,8 +43,8 @@ interface PlaceholderHighlight {
      * @param progress the current animated progress in the range of 0f..1f.
      * @param size The size of the current layout to draw in.
      */
-    fun brush(
-        @FloatRange(from = 0.0, to = 1.0) progress: Float,
+    public fun brush(
+        /*@FloatRange(from = 0.0, to = 1.0)*/ progress: Float,
         size: Size
     ): Brush
 
@@ -54,10 +53,10 @@ interface PlaceholderHighlight {
      *
      * @param progress the current animated progress in the range of 0f..1f.
      */
-    @FloatRange(from = 0.0, to = 1.0)
-    fun alpha(progress: Float): Float
+    /*@FloatRange(from = 0.0, to = 1.0)*/
+    public fun alpha(progress: Float): Float
 
-    companion object
+    public companion object
 }
 
 /**
@@ -68,7 +67,7 @@ interface PlaceholderHighlight {
  * @param highlightColor the color of the highlight which is faded in/out.
  * @param animationSpec the [AnimationSpec] to configure the animation.
  */
-fun PlaceholderHighlight.Companion.fade(
+public fun PlaceholderHighlight.Companion.fade(
     highlightColor: Color,
     animationSpec: InfiniteRepeatableSpec<Float> = PlaceholderDefaults.fadeAnimationSpec,
 ): PlaceholderHighlight = Fade(
@@ -90,10 +89,10 @@ fun PlaceholderHighlight.Companion.fade(
  * @param progressForMaxAlpha The progress where the shimmer should be at it's peak opacity.
  * Defaults to 0.6f.
  */
-fun PlaceholderHighlight.Companion.shimmer(
+public fun PlaceholderHighlight.Companion.shimmer(
     highlightColor: Color,
     animationSpec: InfiniteRepeatableSpec<Float> = PlaceholderDefaults.shimmerAnimationSpec,
-    @FloatRange(from = 0.0, to = 1.0) progressForMaxAlpha: Float = 0.6f,
+    /*@FloatRange(from = 0.0, to = 1.0)*/ progressForMaxAlpha: Float = 0.6f,
 ): PlaceholderHighlight = Shimmer(
     highlightColor = highlightColor,
     animationSpec = animationSpec,
