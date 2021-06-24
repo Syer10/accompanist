@@ -1,8 +1,8 @@
 # Project information
 site_name: 'Accompanist'
-site_description: 'A group of libraries to help write Jetpack Compose apps.'
+site_description: 'A group of libraries to help write JetBrains Compose apps.'
 site_author: 'Google'
-site_url: 'https://google.github.io/accompanist/'
+site_url: 'https://syer10.github.io/accompanist/'
 edit_uri: 'tree/main/docs/'
 remote_branch: gh-pages
 
@@ -10,20 +10,11 @@ docs_dir: docs-gen
 
 # Repository
 repo_name: 'Accompanist'
-repo_url: 'https://github.com/google/accompanist'
+repo_url: 'https://github.com/Syer10/accompanist'
 
 # Navigation
 nav:
   - 'Overview': index.md
-  - 'Insets':
-    - 'Guide': insets.md
-    - 'API': api/insets/
-  - 'System UI Controller':
-    - 'Guide': systemuicontroller.md
-    - 'API': api/systemuicontroller/
-  - 'AppCompat Theme':
-    - 'Guide': appcompat-theme.md
-    - 'API': api/appcompat-theme/
   - 'Pager layouts':
     - 'Guide': pager.md
     - 'API': api/pager/
@@ -33,22 +24,10 @@ nav:
   - 'Placeholder':
     - 'Guide': placeholder.md
     - 'Foundation API': api/placeholder/
-    - 'Material API': api/placeholder-material/
-  - 'Drawable Painter':
-    - 'Guide': drawablepainter.md
-    - 'API': api/drawablepainter/ 
+    - 'Material API': api/placeholder-material/    
   - 'Flow layouts':
     - 'Guide': flowlayout.md
     - 'API': api/flowlayout/
-  - 'Permissions':
-    - 'Guide': permissions.md
-    - 'API': api/permissions/
-  - 'Navigation Animation':
-      - 'Guide': navigation-animation.md
-      - 'API': api/navigation-animation/
-  - 'Navigation Material':
-      - 'Guide': navigation-material.md
-      - 'API': api/navigation-material/
   - 'Snapshots': using-snapshot-version.md
   - 'Contributing': contributing.md
   - 'Maintainers':

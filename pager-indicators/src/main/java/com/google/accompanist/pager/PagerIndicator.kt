@@ -58,7 +58,7 @@ import androidx.compose.ui.unit.dp
  */
 @ExperimentalPagerApi
 @Composable
-fun HorizontalPagerIndicator(
+public fun HorizontalPagerIndicator(
     pagerState: PagerState,
     modifier: Modifier = Modifier,
     activeColor: Color = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
@@ -129,7 +129,7 @@ fun HorizontalPagerIndicator(
  */
 @ExperimentalPagerApi
 @Composable
-fun VerticalPagerIndicator(
+public fun VerticalPagerIndicator(
     pagerState: PagerState,
     modifier: Modifier = Modifier,
     activeColor: Color = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),

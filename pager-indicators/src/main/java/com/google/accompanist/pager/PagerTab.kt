@@ -39,7 +39,7 @@ import kotlin.math.max
  * @sample com.google.accompanist.sample.pager.PagerWithTabs
  */
 @ExperimentalPagerApi
-fun Modifier.pagerTabIndicatorOffset(
+public fun Modifier.pagerTabIndicatorOffset(
     pagerState: PagerState,
     tabPositions: List<TabPosition>,
 ): Modifier = composed {

@@ -52,11 +52,11 @@ import androidx.compose.ui.unit.LayoutDirection
 /**
  * Contains default values used by [Modifier.placeholder] and [PlaceholderHighlight].
  */
-object PlaceholderDefaults {
+public object PlaceholderDefaults {
     /**
      * The default [InfiniteRepeatableSpec] to use for [fade].
      */
-    val fadeAnimationSpec: InfiniteRepeatableSpec<Float> by lazy {
+    public val fadeAnimationSpec: InfiniteRepeatableSpec<Float> by lazy {
         infiniteRepeatable(
             animation = tween(delayMillis = 200, durationMillis = 600),
             repeatMode = RepeatMode.Reverse,
@@ -66,7 +66,7 @@ object PlaceholderDefaults {
     /**
      * The default [InfiniteRepeatableSpec] to use for [shimmer].
      */
-    val shimmerAnimationSpec: InfiniteRepeatableSpec<Float> by lazy {
+    public val shimmerAnimationSpec: InfiniteRepeatableSpec<Float> by lazy {
         infiniteRepeatable(
             animation = tween(durationMillis = 1700, delayMillis = 200),
             repeatMode = RepeatMode.Restart
@@ -102,7 +102,7 @@ object PlaceholderDefaults {
  * @param contentFadeTransitionSpec The transition spec to use when fading the content
  * on/off screen. The boolean parameter defined for the transition is [visible].
  */
-fun Modifier.placeholder(
+public fun Modifier.placeholder(
     visible: Boolean,
     color: Color,
     shape: Shape = RectangleShape,
