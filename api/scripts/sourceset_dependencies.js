@@ -1,1 +1,1 @@
-sourceset_dependencies = '{":pager:dokkaHtmlPartial/main":[],":swiperefresh:dokkaHtmlPartial/main":[],":pager-indicators:dokkaHtmlPartial/main":[],":flowlayout:dokkaHtmlPartial/main":[]}'
+sourceset_dependencies = '{":pager:dokkaHtmlPartial/main":[],":placeholder-material:dokkaHtmlPartial/main":[],":swiperefresh:dokkaHtmlPartial/main":[],":pager-indicators:dokkaHtmlPartial/main":[],":placeholder:dokkaHtmlPartial/main":[],":flowlayout:dokkaHtmlPartial/main":[]}'
