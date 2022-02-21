@@ -28,7 +28,7 @@ kotlin {
     android {
         compilations {
             all {
-                kotlinOptions.jvmTarget = "1.8"
+                kotlinOptions.jvmTarget = "11"
             }
         }
     }
@@ -74,28 +74,6 @@ kotlin {
         }
         val androidTest by getting {
             kotlin.srcDir("src/jvmTest/kotlin")
-        }
-    }
-}
-
-android {
-    compileSdk = 31
-    defaultConfig {
-        minSdk = 21
-        targetSdk = 31
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    compileOptions {
-        sourceCompatibility(JavaVersion.VERSION_1_8)
-        targetCompatibility(JavaVersion.VERSION_1_8)
-    }
-    sourceSets {
-        named("main") {
-            val altManifest = file("src/androidMain/AndroidManifest.xml")
-            if (altManifest.exists()) {
-                manifest.srcFile(altManifest.path)
-            }
         }
     }
 }

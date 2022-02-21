@@ -30,7 +30,7 @@ plugins {
     id("org.jetbrains.compose") version "1.0.1" apply false
     id("com.vanniktech.maven.publish") version "0.17.0"
     id("org.jetbrains.dokka") version "1.5.0"
-    // id("me.tylerbwong.gradle.metalava") version "0.1.9" apply false
+    id("me.tylerbwong.gradle.metalava") version "0.2.1" apply false
     id("com.github.ben-manes.versions") version "0.41.0"
 }
 
@@ -50,6 +50,7 @@ allprojects {
 subprojects {
     apply(plugin = "com.vanniktech.maven.publish")
     apply(plugin = "org.jetbrains.dokka")
+    apply(plugin = "me.tylerbwong.gradle.metalava")
     //apply(plugin = "com.diffplug.spotless")
     //spotless {
     //kotlin {
@@ -69,25 +70,21 @@ subprojects {
         kotlinOptions {
             // Treat all Kotlin warnings as errors
             allWarningsAsErrors = true
-
-            freeCompilerArgs = listOf(
-                // Allow use of @OptIn
-                "-Xopt-in=kotlin.RequiresOptIn",
-                // Enable default methods in interfaces
-                "-Xjvm-default=all"
-            )
         }
     }
 
-    extensions.findByType(MavenPublishPluginExtension::class)?.apply {
-        sonatypeHost = SonatypeHost.S01
+    plugins.withType<com.vanniktech.maven.publish.MavenPublishPlugin> {
+        configure<MavenPublishPluginExtension> {
+            sonatypeHost = SonatypeHost.S01
+        }
     }
 
-    extensions.findByType<JavaPluginExtension>()?.apply {
-        targetCompatibility = JavaVersion.VERSION_11
-        sourceCompatibility = JavaVersion.VERSION_11
+    plugins.withType<JavaPlugin> {
+        configure<JavaPluginExtension> {
+            targetCompatibility = JavaVersion.VERSION_11
+            sourceCompatibility = JavaVersion.VERSION_11
+        }
     }
-
 
     // Read in the signing.properties file if it is exists
     val signingPropsFile = rootProject.file("release/signing.properties")
@@ -119,7 +116,7 @@ subprojects {
             noAndroidSdkLink.set(false)
 
             // Add samples from :sample module
-            samples.from(rootProject.file("sample/src/main/java/"))
+            //samples.from(rootProject.file("sample/src/main/java/"))
 
             // AndroidX + Compose docs
             externalDocumentationLink {
@@ -132,12 +129,42 @@ subprojects {
             }
 
             sourceLink {
-                localDirectory.set(project.file("src/main/java"))
+                localDirectory.set(project.file("src/jvmMain/kotlin"))
                 // URL showing where the source code can be accessed through the web browser
                 remoteUrl.set(URL("https://github.com/Syer10/accompanist/blob/main/${project.name}/src/main/java"))
                 // Suffix which is used to append the line number to the URL. Use #L for GitHub
                 remoteLineSuffix.set("#L")
             }
+        }
+    }
+
+    plugins.withType<com.android.build.gradle.BasePlugin> {
+        configure<com.android.build.gradle.BaseExtension> {
+            compileSdkVersion(31)
+            defaultConfig {
+                minSdk = 21
+                targetSdk = 31
+
+                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+            }
+            compileOptions {
+                sourceCompatibility(JavaVersion.VERSION_11)
+                targetCompatibility(JavaVersion.VERSION_11)
+            }
+            sourceSets {
+                named("main") {
+                    val altManifest = file("src/androidMain/AndroidManifest.xml")
+                    if (altManifest.exists()) {
+                        manifest.srcFile(altManifest.path)
+                    }
+                }
+            }
+        }
+    }
+    plugins.withType<me.tylerbwong.gradle.metalava.plugin.MetalavaPlugin>() {
+        configure<me.tylerbwong.gradle.metalava.extension.MetalavaExtension>() {
+            filename = "api/current.api"
+            reportLintsAsErrors = true
         }
     }
 
