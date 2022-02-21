@@ -28,8 +28,8 @@ plugins {
     id("com.android.library") version "7.0.4" apply false
     id("com.android.application") version "7.0.4" apply false
     id("org.jetbrains.compose") version "1.0.1" apply false
-    id("com.vanniktech.maven.publish") version "0.17.0"
-    id("org.jetbrains.dokka") version "1.5.0"
+    id("com.vanniktech.maven.publish") version "0.18.0"
+    id("org.jetbrains.dokka") version "1.6.10"
     id("me.tylerbwong.gradle.metalava") version "0.2.1" apply false
     id("com.github.ben-manes.versions") version "0.41.0"
 }
@@ -70,12 +70,6 @@ subprojects {
         kotlinOptions {
             // Treat all Kotlin warnings as errors
             allWarningsAsErrors = true
-        }
-    }
-
-    plugins.withType<com.vanniktech.maven.publish.MavenPublishPlugin> {
-        configure<MavenPublishPluginExtension> {
-            sonatypeHost = SonatypeHost.S01
         }
     }
 
@@ -161,8 +155,8 @@ subprojects {
             }
         }
     }
-    plugins.withType<me.tylerbwong.gradle.metalava.plugin.MetalavaPlugin>() {
-        configure<me.tylerbwong.gradle.metalava.extension.MetalavaExtension>() {
+    plugins.withType<me.tylerbwong.gradle.metalava.plugin.MetalavaPlugin> {
+        configure<me.tylerbwong.gradle.metalava.extension.MetalavaExtension> {
             filename = "api/current.api"
             reportLintsAsErrors = true
         }
