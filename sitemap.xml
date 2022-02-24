@@ -1,43 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://syer10.github.io/accompanist/</loc>
-         <lastmod>2021-07-15</lastmod>
+         <loc>https://google.github.io/accompanist/</loc>
+         <lastmod>2022-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://syer10.github.io/accompanist/contributing/</loc>
-         <lastmod>2021-07-15</lastmod>
+         <loc>https://google.github.io/accompanist/contributing/</loc>
+         <lastmod>2022-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://syer10.github.io/accompanist/flowlayout/</loc>
-         <lastmod>2021-07-15</lastmod>
+         <loc>https://google.github.io/accompanist/flowlayout/</loc>
+         <lastmod>2022-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://syer10.github.io/accompanist/pager/</loc>
-         <lastmod>2021-07-15</lastmod>
+         <loc>https://google.github.io/accompanist/migration/</loc>
+         <lastmod>2022-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://syer10.github.io/accompanist/placeholder/</loc>
-         <lastmod>2021-07-15</lastmod>
+         <loc>https://google.github.io/accompanist/pager/</loc>
+         <lastmod>2022-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://syer10.github.io/accompanist/swiperefresh/</loc>
-         <lastmod>2021-07-15</lastmod>
+         <loc>https://google.github.io/accompanist/swiperefresh/</loc>
+         <lastmod>2022-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://syer10.github.io/accompanist/updating/</loc>
-         <lastmod>2021-07-15</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://syer10.github.io/accompanist/using-snapshot-version/</loc>
-         <lastmod>2021-07-15</lastmod>
+         <loc>https://google.github.io/accompanist/updating/</loc>
+         <lastmod>2022-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
