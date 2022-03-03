@@ -33,7 +33,7 @@ kotlin {
             }
         }
     }
-    jvm("desktop") {
+    jvm {
         compilations {
             all {
                 kotlinOptions.jvmTarget = "11"
