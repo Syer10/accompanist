@@ -51,7 +51,6 @@ kotlin {
             dependencies {
                 api(kotlin("stdlib-common"))
                 api(compose.foundation)
-                //implementation(compose("org.jetbrains.compose.ui:ui-util"))
             }
         }
         val commonTest by getting {
@@ -60,14 +59,14 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val desktopMain by getting {
-            kotlin.srcDir("src/jvmMain/kotlin")
+        val jvmMain by getting {
+            kotlin.srcDir("src/desktopMain/kotlin")
             dependencies {
                 api(kotlin("stdlib-jdk8"))
             }
         }
-        val desktopTest by getting {
-            kotlin.srcDir("src/jvmTest/kotlin")
+        val jvmTest by getting {
+            kotlin.srcDir("src/desktopTest/kotlin")
         }
 
         val androidMain by getting {
