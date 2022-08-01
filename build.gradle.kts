@@ -123,9 +123,9 @@ subprojects {
             }
 
             sourceLink {
-                localDirectory.set(project.file("src/jvmMain/kotlin"))
+                localDirectory.set(project.file("src/commonMain/kotlin"))
                 // URL showing where the source code can be accessed through the web browser
-                remoteUrl.set(URL("https://github.com/Syer10/accompanist/blob/main/${project.name}/src/main/java"))
+                remoteUrl.set(URL("https://github.com/Syer10/accompanist/blob/main/${project.name}/src/"))
                 // Suffix which is used to append the line number to the URL. Use #L for GitHub
                 remoteLineSuffix.set("#L")
             }
