@@ -19,9 +19,6 @@ A library that adds Flexbox-like layout components to Jetpack Compose.
 ### ⬇️ [Swipe to Refresh](./swiperefresh/)
 A library that provides a layout implementing the swipe-to-refresh UX pattern, similar to Android's [SwipeRefreshLayout](https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout).
 
-### 🌏 [Web](./web/)
-A wrapper around WebView for basic WebView support in Jetpack Compose.
-
 ---
 
 ## Future?
