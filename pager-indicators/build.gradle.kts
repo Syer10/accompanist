@@ -56,24 +56,18 @@ kotlin {
             }
         }
         val jvmMain by getting {
-            kotlin.srcDir("src/desktopMain/kotlin")
             dependencies {
                 api(kotlin("stdlib-jdk8"))
             }
         }
-        val jvmTest by getting {
-            kotlin.srcDir("src/desktopTest/kotlin")
-        }
+        val jvmTest by getting
 
         val androidMain by getting {
-            kotlin.srcDir("src/jvmMain/kotlin")
             dependencies {
                 api(kotlin("stdlib-jdk8"))
                 api(libs.compose.material.material)
             }
         }
-        val androidTest by getting {
-            kotlin.srcDir("src/jvmTest/kotlin")
-        }
+        val androidTest by getting
     }
 }
