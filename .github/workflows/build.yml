@@ -11,10 +11,7 @@ on:
 
 jobs:
   build:
-    # Skip build if head commit contains 'skip ci'
-    if: "!contains(github.event.head_commit.message, 'skip ci')"
-
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
     timeout-minutes: 30
 
     steps:
@@ -159,7 +156,7 @@ jobs:
   deploy:
     if: github.event_name == 'push' # only deploy for pushed commits (not PRs)
 
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
     needs: [ build ]
     timeout-minutes: 30
     env:
