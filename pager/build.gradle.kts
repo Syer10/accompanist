@@ -40,6 +40,11 @@ kotlin {
             }
         }
     }
+    iosX64()
+    iosArm64()
+    // iosSimulatorArm64()
+    macosX64()
+    macosArm64()
 
     sourceSets {
         val commonMain by getting {
@@ -48,7 +53,6 @@ kotlin {
                 api(compose.foundation)
                 implementation(project(":snapper"))
                 implementation(libs.napier)
-                implementation(libs.androidx.annotation)
             }
         }
         val commonTest by getting {
@@ -71,5 +75,23 @@ kotlin {
             }
         }
         val androidTest by getting
+
+        val darwinMain by creating {
+            dependsOn(commonMain)
+        }
+        val darwinTest by creating {
+            dependsOn(commonTest)
+        }
+
+        listOf(
+            "iosX64",
+            "iosArm64",
+            // "iosSimulatorArm64",
+            "macosX64",
+            "macosArm64"
+        ).forEach {
+            getByName(it + "Main").dependsOn(darwinMain)
+            getByName(it + "Test").dependsOn(darwinTest)
+        }
     }
 }

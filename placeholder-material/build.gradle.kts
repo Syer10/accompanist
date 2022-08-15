@@ -40,6 +40,11 @@ kotlin {
             }
         }
     }
+    iosX64()
+    iosArm64()
+    // iosSimulatorArm64()
+    macosX64()
+    macosArm64()
 
     sourceSets {
         val commonMain by getting {
@@ -47,7 +52,6 @@ kotlin {
                 api(kotlin("stdlib-common"))
                 api(compose.material)
                 api(project(":placeholder"))
-                implementation(libs.androidx.annotation)
                 implementation(libs.napier)
             }
         }
@@ -71,5 +75,23 @@ kotlin {
             }
         }
         val androidTest by getting
+
+        val darwinMain by creating {
+            dependsOn(commonMain)
+        }
+        val darwinTest by creating {
+            dependsOn(commonTest)
+        }
+
+        listOf(
+            "iosX64",
+            "iosArm64",
+            // "iosSimulatorArm64",
+            "macosX64",
+            "macosArm64"
+        ).forEach {
+            getByName(it + "Main").dependsOn(darwinMain)
+            getByName(it + "Test").dependsOn(darwinTest)
+        }
     }
 }

@@ -69,7 +69,7 @@ androidx-lifecycle-viewmodel-compose = "androidx.lifecycle:lifecycle-viewmodel-c
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidxnavigation" }
 androidx-navigation-testing = { module = "androidx.navigation:navigation-testing", version.ref = "androidxnavigation" }
 
-napier = "io.github.aakira:napier:1.4.1"
+napier = "io.github.aakira:napier:2.6.1"
 
 androidx-test-core = { module = "androidx.test:core-ktx", version.ref = "androidxtest" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxtest" }
