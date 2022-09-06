@@ -25,13 +25,13 @@ import java.util.Properties
 plugins {
     // id("com.diffplug.spotless") version "5.14.0"
     kotlin("multiplatform") version "1.7.0" apply false
-    id("com.android.library") version "7.3.0-beta05" apply false
-    id("com.android.application") version "7.3.0-beta05" apply false
-    id("org.jetbrains.compose") version "1.2.0-alpha01-dev753" apply false
+    id("com.android.library") version "7.3.0-rc01" apply false
+    id("com.android.application") version "7.3.0-rc01" apply false
+    id("org.jetbrains.compose") version "1.2.0-alpha01-dev774" apply false
     id("com.vanniktech.maven.publish") version "0.18.0"
     id("org.jetbrains.dokka") version "1.7.0"
     id("me.tylerbwong.gradle.metalava") version "0.2.1" apply false
-    id("com.github.ben-manes.versions") version "0.41.0"
+    id("com.github.ben-manes.versions") version "0.42.0"
 }
 
 tasks.withType<DokkaMultiModuleTask> {
