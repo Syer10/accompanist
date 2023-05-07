@@ -4,10 +4,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>SnapperFlingBehavior</title>
 <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -18,16 +26,20 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
-<script type="text/javascript" src="../../../scripts/prism.js" async></script></head>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
 <body>
 <div class="navigation-wrapper" id="navigation-wrapper">
     <div id="leftToggler"><span class="icon-toggler"></span></div>
     <div class="library-name">
 <a href="../../../index.html">
 <span>accompanist</span>            </a>    </div>
-    <div>0.25.2
+    <div>
     </div>
     <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":snapper:dokkaHtmlPartial/commonMain">common</button>
+        </div>
         <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
         <div id="searchBar"></div>
     </div>
@@ -37,76 +49,69 @@ if(savedDarkMode === true){
         <div id="sideMenu"></div>
     </div>
     <div id="main">
-<div class="main-content" id="content" pageids="snapper::com.google.accompanist.snapper/SnapperFlingBehavior///PointingToDeclaration//-534649294">
-  <div class="breadcrumbs"><a href="../../index.html">snapper</a><span class="delimiter">/</span><a href="../index.html">com.google.accompanist.snapper</a><span class="delimiter">/</span><a href="index.html">SnapperFlingBehavior</a></div>
+<div class="main-content" data-page-type="classlike" id="content" pageids="snapper::com.google.accompanist.snapper/SnapperFlingBehavior///PointingToDeclaration//-534649294">
+  <div class="breadcrumbs"><a href="../../index.html">snapper</a><span class="delimiter">/</span><a href="../index.html">com.google.accompanist.snapper</a><span class="delimiter">/</span><span class="current">SnapperFlingBehavior</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Snapper</span><wbr><span>Fling</span><wbr><span><span>Behavior</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":snapper:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">SnapperFlingBehavior</a> : <a href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/FlingBehavior.html">FlingBehavior</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">A snapping <a href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/FlingBehavior.html">FlingBehavior</a> for <a href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/lazy/LazyListState.html">LazyListState</a>. Typically this would be created via <a href="../remember-snapper-fling-behavior.html">rememberSnapperFlingBehavior</a>.</p><p class="paragraph">Note: the default parameter value for <a href="../../../snapper/com.google.accompanist.snapper/-snapper-fling-behavior/decay-animation-spec.html">decayAnimationSpec</a> is different to the value used in <a href="../remember-snapper-fling-behavior.html">rememberSnapperFlingBehavior</a>, due to not being able to access composable functions.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":snapper:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">SnapperFlingBehavior</a> : <a href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/FlingBehavior.html">FlingBehavior</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/Syer10/accompanist/blob/main/snapper/src//com/google/accompanist/snapper/SnapperFlingBehavior.kt#L289">source</a>)</span></span></div><p class="paragraph">A snapping <a href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/FlingBehavior.html">FlingBehavior</a> for <a href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/lazy/LazyListState.html">LazyListState</a>. Typically this would be created via <a href="../remember-snapper-fling-behavior.html">rememberSnapperFlingBehavior</a>.</p><p class="paragraph">Note: the default parameter value for <a href="../../../snapper/com.google.accompanist.snapper/-snapper-fling-behavior/decay-animation-spec.html">decayAnimationSpec</a> is different to the value used in <a href="../remember-snapper-fling-behavior.html">rememberSnapperFlingBehavior</a>, due to not being able to access composable functions.</p></div></div>
   </div>
   <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Sources">Sources</button></div>
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY">Members</button></div>
     <div class="tabs-section-body">
-      <h2 class="tabbedcontent">Constructors</h2>
-      <div class="table" data-togglable="Constructors"><a data-name="-62879893%2FConstructors%2F-534649294" anchor-label="SnapperFlingBehavior" id="-62879893%2FConstructors%2F-534649294" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain"></a>
-        <div class="table-row" data-filterable-current=":snapper:dokkaHtmlPartial/commonMain" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain">
-          <div class="main-subrow keyValue TabbedContent">
-            <div class=""><span class="inline-flex">
-                <div><a href="-snapper-fling-behavior.html"><span>Snapper</span><wbr><span>Fling</span><wbr><span><span>Behavior</span></span></a></div>
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-62879893%2FConstructors%2F-534649294" anchor-label="SnapperFlingBehavior" id="-62879893%2FConstructors%2F-534649294" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":snapper:dokkaHtmlPartial/commonMain" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-snapper-fling-behavior.html"><span>Snapper</span><wbr><span>Fling</span><wbr><span><span>Behavior</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-62879893%2FConstructors%2F-534649294"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":snapper:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-snapper-fling-behavior.html"><span class="token function">SnapperFlingBehavior</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;layoutInfo<span class="token operator">: </span><a href="../-snapper-layout-info/index.html">SnapperLayoutInfo</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;decayAnimationSpec<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/animation/core/DecayAnimationSpec.html">DecayAnimationSpec</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;springAnimationSpec<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/animation/core/AnimationSpec.html">AnimationSpec</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator">&gt;</span><span class="token operator"> = </span>SnapperFlingBehaviorDefaults.SpringAnimationSpec<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;snapIndex<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../-snapper-layout-info/index.html">SnapperLayoutInfo</a><span class="token punctuation">, </span><span class="token keyword"></span>startIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><span class="token keyword"></span>targetIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>SnapperFlingBehaviorDefaults.SnapIndex</span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":snapper:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">layoutInfo<span class="token operator">: </span><a href="../-snapper-layout-info/index.html">SnapperLayoutInfo</a><span class="token punctuation">, </span></span><span class="parameter ">decayAnimationSpec<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/animation/core/DecayAnimationSpec.html">DecayAnimationSpec</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">springAnimationSpec<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/animation/core/AnimationSpec.html">AnimationSpec</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator">&gt;</span><span class="token operator"> = </span>SnapperFlingBehaviorDefaults.SpringAnimationSpec<span class="token punctuation">, </span></span><span class="parameter ">snapIndex<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../-snapper-layout-info/index.html">SnapperLayoutInfo</a><span class="token punctuation">, </span><span class="token keyword"></span>startIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><span class="token keyword"></span>targetIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>SnapperFlingBehaviorDefaults.SnapIndex</span></span><span class="token punctuation">)</span></div><div class="brief "></div></div></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <h2 class="">Functions</h2>
-      <div class="table" data-togglable="Functions"><a data-name="342221730%2FFunctions%2F-534649294" anchor-label="performFling" id="342221730%2FFunctions%2F-534649294" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain"></a>
-        <div class="table-row" data-filterable-current=":snapper:dokkaHtmlPartial/commonMain" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="perform-fling.html"><span>perform</span><wbr><span><span>Fling</span></span></a></div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="342221730%2FFunctions%2F-534649294" anchor-label="performFling" id="342221730%2FFunctions%2F-534649294" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":snapper:dokkaHtmlPartial/commonMain" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="perform-fling.html"><span>perform</span><wbr><span><span>Fling</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="342221730%2FFunctions%2F-534649294"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":snapper:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/ScrollScope.html">ScrollScope</a><span class="token punctuation">.</span><a href="perform-fling.html"><span class="token function">performFling</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">initialVelocity<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":snapper:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/ScrollScope.html">ScrollScope</a><span class="token punctuation">.</span><a href="perform-fling.html"><span class="token function">performFling</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">initialVelocity<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a></div></div></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <h2 class="">Properties</h2>
-      <div class="table" data-togglable="Properties"><a data-name="-50315850%2FProperties%2F-534649294" anchor-label="animationTarget" id="-50315850%2FProperties%2F-534649294" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain"></a>
-        <div class="table-row" data-filterable-current=":snapper:dokkaHtmlPartial/commonMain" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="animation-target.html"><span>animation</span><wbr><span><span>Target</span></span></a></div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-50315850%2FProperties%2F-534649294" anchor-label="animationTarget" id="-50315850%2FProperties%2F-534649294" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":snapper:dokkaHtmlPartial/commonMain" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="animation-target.html"><span>animation</span><wbr><span><span>Target</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-50315850%2FProperties%2F-534649294"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":snapper:dokkaHtmlPartial/commonMain"><a data-name="-50315850%2FProperties%2F-534649294" anchor-label="animationTarget" id="-50315850%2FProperties%2F-534649294" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="animation-target.html">animationTarget</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-50315850%2FProperties%2F-534649294" anchor-label="animationTarget" id="-50315850%2FProperties%2F-534649294" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain"></a><p class="paragraph">The target item index for any on-going animations.</p></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":snapper:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="animation-target.html">animationTarget</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The target item index for any on-going animations.</p></div></div></div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <h2 class="">Sources</h2>
-      <div class="table" data-togglable="Sources"><a data-name="1388542352%2FSource%2F-534649294" anchor-label="https://github.com/Syer10/accompanist/blob/main/snapper/src//com/google/accompanist/snapper/SnapperFlingBehavior.kt#L281" id="1388542352%2FSource%2F-534649294" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain"></a>
-        <div class="table-row" data-filterable-current=":snapper:dokkaHtmlPartial/commonMain" data-filterable-set=":snapper:dokkaHtmlPartial/commonMain">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="https://github.com/Syer10/accompanist/blob/main/snapper/src//com/google/accompanist/snapper/SnapperFlingBehavior.kt#L281">common source</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1388542352%2FSource%2F-534649294"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div></div>
           </div>
         </div>
       </div>
@@ -114,10 +119,10 @@ if(savedDarkMode === true){
   </div>
 </div>
       <div class="footer">
-        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
       </div>
     </div>
 </div>
-
-</body></html>
+</body>
+</html>
 

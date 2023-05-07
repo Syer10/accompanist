@@ -3,15 +3,13 @@ $dokka.linkExtension:html
 
 module:flowlayout
 com.google.accompanist.flowlayout
-module:pager
-com.google.accompanist.pager
 module:pager-indicators
 com.google.accompanist.pager
 module:placeholder
 com.google.accompanist.placeholder
 module:placeholder-material
 com.google.accompanist.placeholder.material
+module:placeholder-material3
+com.google.accompanist.placeholder.material3
 module:snapper
 com.google.accompanist.snapper
-module:swiperefresh
-com.google.accompanist.swiperefresh
