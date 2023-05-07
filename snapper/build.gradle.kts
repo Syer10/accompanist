@@ -29,7 +29,7 @@ kotlin {
         publishAllLibraryVariants()
         compilations {
             all {
-                kotlinOptions.jvmTarget = "11"
+                kotlinOptions.jvmTarget = "1.8"
             }
         }
     }
@@ -54,8 +54,7 @@ kotlin {
         }
         val commonMain by getting {
             dependencies {
-                api(kotlin("stdlib-common"))
-                api(compose.foundation)
+                compileOnly(compose.foundation)
             }
         }
         val commonTest by getting {
@@ -66,18 +65,16 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
-                api(kotlin("stdlib-jdk8"))
             }
         }
         val jvmTest by getting
 
         val androidMain by getting {
             dependencies {
-                api(kotlin("stdlib-jdk8"))
-                api(libs.compose.foundation.foundation)
+                compileOnly(libs.compose.foundation.foundation)
             }
         }
-        val androidTest by getting
+        val androidUnitTest by getting
 
         val darwinMain by creating {
             dependsOn(commonMain)
@@ -97,4 +94,8 @@ kotlin {
             getByName(it + "Test").dependsOn(darwinTest)
         }
     }
+}
+
+android {
+    namespace = "com.google.accompanist.snapper"
 }

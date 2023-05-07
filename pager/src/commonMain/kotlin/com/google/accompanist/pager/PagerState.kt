@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-@file:Suppress("MemberVisibilityCanBePrivate")
+@file:Suppress("DEPRECATION", "MemberVisibilityCanBePrivate")
 
 package com.google.accompanist.pager
 
@@ -49,7 +49,17 @@ import kotlin.math.roundToInt
  *
  * @param initialPage the initial value for [PagerState.currentPage]
  */
-@ExperimentalPagerApi
+@Deprecated(
+    """
+accompanist/pager is deprecated.
+The androidx.compose equivalent of rememberPagerState is androidx.compose.foundation.pager.rememberPagerState().
+For more migration information, please visit https://google.github.io/accompanist/pager/#migration
+""",
+    replaceWith = ReplaceWith(
+        "androidx.compose.foundation.pager.rememberPagerState(initialPage = initialPage)",
+        "androidx.compose.foundation.pager.rememberPagerState"
+    )
+)
 @Composable
 public fun rememberPagerState(
     @IntRange(from = 0) initialPage: Int = 0,
@@ -66,7 +76,17 @@ public fun rememberPagerState(
  *
  * @param currentPage the initial value for [PagerState.currentPage]
  */
-@ExperimentalPagerApi
+@Deprecated(
+    """
+accompanist/pager is deprecated.
+The androidx.compose equivalent of Insets is Pager.
+For more migration information, please visit https://google.github.io/accompanist/pager/#migration
+""",
+    replaceWith = ReplaceWith(
+        "PagerState(currentPage = currentPage)",
+        "androidx.compose.foundation.pager.PagerState"
+    )
+)
 @Stable
 public class PagerState(
     @IntRange(from = 0) currentPage: Int = 0,
@@ -82,12 +102,15 @@ public class PagerState(
             val layoutInfo = lazyListState.layoutInfo
             return layoutInfo.visibleItemsInfo.maxByOrNull {
                 val start = maxOf(it.offset, 0)
-                val end = minOf(it.offset + it.size, layoutInfo.viewportEndOffset - afterContentPadding)
+                val end = minOf(
+                    it.offset + it.size,
+                    layoutInfo.viewportEndOffset - layoutInfo.afterContentPadding
+                )
                 end - start
             }
         }
 
-    internal var afterContentPadding = 0
+    internal var itemSpacing by mutableStateOf(0)
 
     private val currentPageLayoutInfo: LazyListItemInfo?
         get() = lazyListState.layoutInfo.visibleItemsInfo.lastOrNull {
@@ -106,6 +129,7 @@ public class PagerState(
      * The number of pages to display.
      */
     @get:IntRange(from = 0)
+    @Deprecated("pageCount is deprecated, use androidx.compose.foundation.pager.PagerState.canScrollForward or androidx.compose.foundation.pager.PagerState.canScrollBackward")
     public val pageCount: Int by derivedStateOf {
         lazyListState.layoutInfo.totalItemsCount
     }
@@ -135,9 +159,7 @@ public class PagerState(
      */
     public val currentPageOffset: Float by derivedStateOf {
         currentPageLayoutInfo?.let {
-            // We coerce since itemSpacing can make the offset > 1f.
-            // We don't want to count spacing in the offset so cap it to 1f
-            (-it.offset / it.size.toFloat()).coerceIn(-1f, 1f)
+            (-it.offset / (it.size + itemSpacing).toFloat()).coerceIn(-0.5f, 0.5f)
         } ?: 0f
     }
 
@@ -229,11 +251,11 @@ public class PagerState(
                     // offset from the size
                     lazyListState.animateScrollToItem(
                         index = page,
-                        scrollOffset = (target.size * pageOffset).roundToInt()
+                        scrollOffset = ((target.size + itemSpacing) * pageOffset).roundToInt()
                     )
                 } else if (layoutInfo.visibleItemsInfo.isNotEmpty()) {
                     // If we don't, we use the current page size as a guide
-                    val currentSize = layoutInfo.visibleItemsInfo.first().size
+                    val currentSize = layoutInfo.visibleItemsInfo.first().size + itemSpacing
                     lazyListState.animateScrollToItem(
                         index = page,
                         scrollOffset = (currentSize * pageOffset).roundToInt()
@@ -242,13 +264,13 @@ public class PagerState(
                     // The target should be visible now
                     target = lazyListState.layoutInfo.visibleItemsInfo.firstOrNull { it.index == page }
 
-                    if (target != null && target.size != currentSize) {
+                    if (target != null && target.size + itemSpacing != currentSize) {
                         // If the size we used for calculating the offset differs from the actual
                         // target page size, we need to scroll again. This doesn't look great,
                         // but there's not much else we can do.
                         lazyListState.animateScrollToItem(
                             index = page,
-                            scrollOffset = (target.size * pageOffset).roundToInt()
+                            scrollOffset = ((target.size + itemSpacing) * pageOffset).roundToInt()
                         )
                     }
                 }
@@ -288,7 +310,7 @@ public class PagerState(
             if (pageOffset.absoluteValue > 0.0001f) {
                 currentPageLayoutInfo?.let {
                     scroll {
-                        scrollBy(it.size * pageOffset)
+                        scrollBy((it.size + itemSpacing) * pageOffset)
                     }
                 }
             }
@@ -335,7 +357,7 @@ public class PagerState(
     }
 
     private fun requireCurrentPageOffset(value: Float, name: String) {
-        require(value in -1f..1f) { "$name must be >= 0 and <= 1" }
+        require(value in -1f..1f) { "$name must be >= -1 and <= 1" }
     }
 
     public companion object {

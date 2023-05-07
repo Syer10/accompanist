@@ -28,6 +28,7 @@ include(":pager")
 include(":pager-indicators")
 include(":placeholder")
 include(":placeholder-material")
+include(":placeholder-material3")
 include(":flowlayout")
 include(":swiperefresh")
 

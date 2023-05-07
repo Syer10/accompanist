@@ -1,4 +1,3 @@
-import com.vanniktech.maven.publish.MavenPublishPluginExtension
 import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.dokka.gradle.DokkaMultiModuleTask
 import org.jetbrains.dokka.gradle.DokkaTaskPartial
@@ -24,14 +23,14 @@ import java.util.Properties
 
 plugins {
     // id("com.diffplug.spotless") version "5.14.0"
-    kotlin("multiplatform") version "1.7.10" apply false
-    id("com.android.library") version "7.3.0-rc01" apply false
-    id("com.android.application") version "7.3.0-rc01" apply false
-    id("org.jetbrains.compose") version "1.2.0-alpha01-dev774" apply false
-    id("com.vanniktech.maven.publish") version "0.18.0"
-    id("org.jetbrains.dokka") version "1.7.10"
+    kotlin("multiplatform") version "1.8.20" apply false
+    id("com.android.library") version "7.4.2" apply false
+    id("com.android.application") version "7.4.2" apply false
+    id("org.jetbrains.compose") version "1.4.0" apply false
+    id("com.vanniktech.maven.publish") version "0.25.1"
+    id("org.jetbrains.dokka") version "1.8.10"
     id("me.tylerbwong.gradle.metalava") version "0.2.1" apply false
-    id("com.github.ben-manes.versions") version "0.42.0"
+    id("com.github.ben-manes.versions") version "0.45.0"
 }
 
 tasks.withType<DokkaMultiModuleTask> {
@@ -70,13 +69,6 @@ subprojects {
         kotlinOptions {
             // Treat all Kotlin warnings as errors
             allWarningsAsErrors = true
-        }
-    }
-
-    plugins.withType<JavaPlugin> {
-        configure<JavaPluginExtension> {
-            targetCompatibility = JavaVersion.VERSION_11
-            sourceCompatibility = JavaVersion.VERSION_11
         }
     }
 
@@ -142,8 +134,8 @@ subprojects {
                 testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
             }
             compileOptions {
-                sourceCompatibility(JavaVersion.VERSION_11)
-                targetCompatibility(JavaVersion.VERSION_11)
+                sourceCompatibility(JavaVersion.VERSION_1_8)
+                targetCompatibility(JavaVersion.VERSION_1_8)
             }
             sourceSets {
                 named("main") {

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+@file:Suppress("DEPRECATION")
 package com.google.accompanist.sample.swiperefresh
 
 import android.os.Bundle
@@ -68,6 +69,7 @@ class SwipeRefreshVerticalPagerSample : ComponentActivity() {
     }
 }
 
+@Suppress("DEPRECATION")
 @OptIn(ExperimentalPagerApi::class, ExperimentalCoilApi::class)
 @Composable
 private fun Sample() {

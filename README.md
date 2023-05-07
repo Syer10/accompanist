@@ -7,17 +7,17 @@ Accompanist is a group of libraries that aim to supplement [Jetpack Compose][com
 **Current Library Jetpack Compose Version: 1.2.1**
 
 Currently, Accompanist contains:
-### 📖 [Pager](./pager/)
-A library that provides utilities for building paginated layouts in Jetpack Compose, similar to Android's [ViewPager][viewpager].
-
 ### ⏳ [Placeholder](./placeholder/)
 A library that provides easy-to-use modifiers for displaying a placeholder UI while content is loading.
 
-### 🌊 [Flow Layouts](./flowlayout/)
+### 🌊 [Flow Layouts](./flowlayout/) (Soon to be deprecated - Upstreamed in Compose 1.4)
 A library that adds Flexbox-like layout components to Jetpack Compose.
 
-### ⬇️ [Swipe to Refresh](./swiperefresh/)
-A library that provides a layout implementing the swipe-to-refresh UX pattern, similar to Android's [SwipeRefreshLayout](https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout).
+### ⬇️ [Swipe to Refresh](./swiperefresh/) (Deprecated)
+See our [Migration Guide](https://google.github.io/accompanist/swiperefresh/) for migrating to PullRefresh in Compose Material.
+
+### 📖 [Pager](./pager/) (Deprecated)
+See our [Migration Guide](https://google.github.io/accompanist/pager/) for migrating to Pager in Compose.
 
 ---
 

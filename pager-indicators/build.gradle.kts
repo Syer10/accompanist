@@ -29,7 +29,7 @@ kotlin {
         publishAllLibraryVariants()
         compilations {
             all {
-                kotlinOptions.jvmTarget = "11"
+                kotlinOptions.jvmTarget = "1.8"
             }
         }
     }
@@ -49,8 +49,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(kotlin("stdlib-common"))
-                api(compose.material)
+                compileOnly(compose.material)
                 api(project(":pager"))
             }
         }
@@ -62,18 +61,16 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
-                api(kotlin("stdlib-jdk8"))
             }
         }
         val jvmTest by getting
 
         val androidMain by getting {
             dependencies {
-                api(kotlin("stdlib-jdk8"))
-                api(libs.compose.material.material)
+                compileOnly(libs.compose.material.material)
             }
         }
-        val androidTest by getting
+        val androidUnitTest by getting
 
         val darwinMain by creating {
             dependsOn(commonMain)
@@ -93,4 +90,8 @@ kotlin {
             getByName(it + "Test").dependsOn(darwinTest)
         }
     }
+}
+
+android {
+    namespace = "com.google.accompanist.pager.indicators"
 }

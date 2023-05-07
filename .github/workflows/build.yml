@@ -2,9 +2,8 @@ name: Build & test
 
 on:
   push:
-    branches:
-      - main
-      - compose-1.0
+    tags:
+      - v*
     paths-ignore:
       - '**.md'
   pull_request:
@@ -26,7 +25,7 @@ jobs:
       - name: set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
+          distribution: temurin
           java-version: 11
 
       - name: Decrypt secrets
@@ -173,7 +172,7 @@ jobs:
       - name: set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
+          distribution: temurin
           java-version: 11
 
       - name: Decrypt secrets
@@ -191,7 +190,7 @@ jobs:
 #          key: gradle-${{ hashFiles('checksum.txt') }}
 
       - name: Deploy to Sonatype
-        run: ./gradlew publish --no-parallel --stacktrace
+        run: ./gradlew publish --stacktrace
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
