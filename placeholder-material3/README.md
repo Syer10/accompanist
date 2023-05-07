@@ -15,7 +15,3 @@ dependencies {
     implementation "ca.gosyer:accompanist-placeholder-material3:<version>"
 }
 ```
-
-Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap]. These are updated on every commit.
-
-  [snap]: https://oss.sonatype.org/content/repositories/snapshots/ca/gosyer/accompanist-placeholder-material3/

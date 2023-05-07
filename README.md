@@ -1,10 +1,10 @@
 ![Accompanist logo](docs/header.png)
 
-Accompanist is a group of libraries that aim to supplement [Jetpack Compose][compose] with features that are commonly required by developers but not yet available. This version is meant to port some of the Accompanist libraries to Compose Multiplatform, so it can be used on the Jvm and Android.
+Accompanist is a group of libraries that aim to supplement [Jetpack Compose][compose] with features that are commonly required by developers but not yet available. This version is meant to port some of the Accompanist libraries to Compose Multiplatform, so it can be used on the Jvm, Android, and Apple platforms.
 
-**Current Library Compose Multiplatform Version: 1.2.0-alpha01-dev774**
+**Current Library Compose Multiplatform Version: 1.4.0**
 
-**Current Library Jetpack Compose Version: 1.2.1**
+**Current Library Jetpack Compose Version: 1.4.0**
 
 Currently, Accompanist contains:
 ### ⏳ [Placeholder](./placeholder/)
