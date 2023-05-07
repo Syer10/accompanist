@@ -49,7 +49,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                compileOnly(compose.material)
+                compileOnly(compose.ui)
+                compileOnly(compose.animation)
                 implementation(compose("org.jetbrains.compose.ui:ui-util"))
                 implementation(libs.napier)
             }
@@ -68,7 +69,8 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                compileOnly(libs.compose.material.material)
+                compileOnly(libs.compose.animation.animation)
+                compileOnly(libs.compose.ui.ui)
             }
         }
         val androidUnitTest by getting
